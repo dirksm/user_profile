@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	   
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd           
+           http://www.springframework.org/schema/tx
+		   http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		   http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd">
+
+        <!-- Main JNDI DataSource for J2EE environments -->
+        <!-- Refers to the main database -->
+		<jee:jndi-lookup id="weddingDS" jndi-name="jdbc/wedding" expected-type="javax.sql.DataSource"/>
+
+        <!-- Transaction manager for a single JDBC DataSource -->
+		<bean id="weddingTxManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<property name="dataSource" ref="weddingDS"/>
+		</bean>
+		<tx:annotation-driven transaction-manager="weddingTxManager"/>
+        
+        <!-- ========================= DAO DEFINITIONS: JDBC TEMPLATES ========================= -->
+		<bean id="iafTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+			<property name="dataSource" ref="weddingDS"/>
+		</bean>
+</beans>
