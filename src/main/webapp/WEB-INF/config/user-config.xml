@@ -37,10 +37,6 @@
 				   <value>/WEB-INF/error/tiles.xml</value>
                    <value>/WEB-INF/tiles/index/tiles.xml</value>
                    <value>/WEB-INF/tiles/layout/tiles.xml</value>
-                   <value>/WEB-INF/tiles/rsvp/tiles.xml</value>
-                   <value>/WEB-INF/tiles/admin/events/tiles.xml</value>
-                   <value>/WEB-INF/tiles/admin/gifts/tiles.xml</value>
-                   <value>/WEB-INF/tiles/admin/invites/tiles.xml</value>
            </list>
        </property>
     </bean>
